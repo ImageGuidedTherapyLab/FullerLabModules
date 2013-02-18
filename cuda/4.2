@@ -1,0 +1,30 @@
+#%Module3.1.6#####################################################################
+##
+# for Tcl script use only
+set     version         4.2
+
+proc ModulesHelp { } {
+        global version 
+        puts stderr "\tThis module loads cuda $version \n"
+        puts stderr "\t SDK is in /opt/apps/cuda/$version/NVIDIA_GPU_Computing_SDK \n"
+}
+
+module-whatis   "loads the cuda $version "
+module-whatis   "\t loads the cula R15 install with './cula_dense_R15-linux.run'"
+module-whatis  "\t loads pycuda build w/ epd 7.3.1"
+module-whatis  "\t loads pycuda build w/ epd 7.3.1"
+module-whatis  "\t ./configure.py --cuda-root=/opt/apps/cuda/4.2/cuda --cudadrv-lib-dir=/usr/lib --boost-inc-dir=/usr/include --boost-lib-dir=/usr/lib --boost-python-libname=boost_python-mt --boost-thread-libname=boost_thread-mt "
+
+
+set             cuda_dir       /opt/apps/cuda/$version/
+setenv          CUDA_DIR              $cuda_dir/cuda
+setenv          SDK_DIR               $cuda_dir/NVIDIA_GPU_Computing_SDK
+append-path	PATH                  $cuda_dir/cuda/bin
+append-path	LD_LIBRARY_PATH       $cuda_dir/cuda/lib64
+append-path	PYTHONPATH            $cuda_dir/pycuda/lib/python2.7/site-packages
+
+#setup cula
+setenv          CULA_ROOT             $cuda_dir/cula
+setenv          CULA_INC_PATH         $cuda_dir/cula/include
+setenv          CULA_LIB_PATH_32      $cuda_dir/cula/lib
+setenv          CULA_LIB_PATH_64      $cuda_dir/cula/lib64

@@ -1,0 +1,30 @@
+#%Module1.0#####################################################################
+##
+##
+# for Tcl script use only
+set     version         7.1-2
+
+proc ModulesHelp { } {
+	puts stderr "\t set environment variables for EPD Python interface"
+}
+
+module-whatis  "\t set environment variables for EPD Python Interface"
+
+set          epd_root           /opt/apps/EPD/epd-$version-rh5-x86_64
+
+##     As the last step, you should edit your .bashrc or prepend
+##     the EPD install path:
+## 
+##         /opt/apps/EPD/epd-$version-rh5-x86_64/bin
+## 
+##     Thank you for installing EPD!
+## 
+## 
+## WARNING: the PYTHONPATH environment variable is currently set.  This might
+##          cause unexpected behavior when running the newly installed Python
+##          interpreter.
+
+#prepend-path LD_LIBRARY_PATH $epd_root/lib
+prepend-path PATH            $epd_root/bin  
+#prepend-path PYTHONPATH      $epd_root/lib/python2.7/site-packages
+

@@ -1,0 +1,17 @@
+#%Module3.1.6#####################################################################
+##
+# for Tcl script use only
+set     version         4.0
+
+proc ModulesHelp { } {
+        global version 
+        puts stderr "\tThis module loads cuda $version \n"
+}
+
+module-whatis   "loads the cuda $version "
+
+set     cuda_dir       /opt/apps/cuda/$version/cuda
+
+setenv          CUDA_DIR              $cuda_dir
+append-path	PATH                  $cuda_dir/bin
+append-path	LD_LIBRARY_PATH       $cuda_dir/lib64
