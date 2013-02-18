@@ -1,7 +1,7 @@
 #%Module3.1.6#####################################################################
 ##
 # for Tcl script use only
-set     version         2011a
+set     version         2012b
 
 proc ModulesHelp { } {
         global version 
