@@ -16,7 +16,7 @@ module-whatis  "\t loads pycuda build w/ epd 7.3.1"
 module-whatis  "\t ./configure.py --cuda-root=/opt/apps/cuda/4.2/cuda --cudadrv-lib-dir=/usr/lib --boost-inc-dir=/usr/include --boost-lib-dir=/usr/lib --boost-python-libname=boost_python-mt --boost-thread-libname=boost_thread-mt "
 
 
-set             cuda_dir       /opt/apps/cuda/$version/
+set             cuda_dir       /opt/apps/cuda/$version
 setenv          CUDA_DIR              $cuda_dir/cuda
 setenv          SDK_DIR               $cuda_dir/NVIDIA_GPU_Computing_SDK
 append-path	PATH                  $cuda_dir/cuda/bin
