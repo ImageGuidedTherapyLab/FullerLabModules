@@ -13,6 +13,7 @@ module-whatis   "loads the Matlab $version "
 set     matlab_dir      /opt/apps/matlab/$version
 
 prepend-path	PATH             $matlab_dir/bin
+prepend-path	LD_PRELOAD	 /usr/lib/x86_64-linux-gnu/libstdc++.so.6
 prepend-path	LD_LIBRARY_PATH  $matlab_dir/runtime/glnxa64
 prepend-path	LD_LIBRARY_PATH  $matlab_dir/bin/glnxa64
 prepend-path	LD_LIBRARY_PATH  $matlab_dir/sys/java/jre/glnxa64/jre/lib/amd64/server

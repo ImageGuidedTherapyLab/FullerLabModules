@@ -13,5 +13,6 @@ module-whatis   "loads the cuda $version "
 set     cuda_dir       /opt/apps/cuda/$version/cuda
 
 setenv          CUDA_DIR              $cuda_dir
+setenv          SDK_DIR               $cuda_dir/NVIDIA_GPU_Computing_SDK
 append-path	PATH                  $cuda_dir/bin
 append-path	LD_LIBRARY_PATH       $cuda_dir/lib64
