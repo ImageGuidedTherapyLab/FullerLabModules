@@ -1,0 +1,16 @@
+#%Module3.1.6#####################################################################
+##
+# for Tcl script use only
+set     version         3.10.1
+
+proc ModulesHelp { } {
+        global version 
+        puts stderr "\tThis module loads Paraview $version \n"
+}
+
+module-whatis   "loads the Paraview $version "
+
+set     paraview_dir      /opt/apps/Paraview/ParaView-$version-Linux-x86_64
+
+prepend-path	PATH             $paraview_dir/bin
+#prepend-path	LD_LIBRARY_PATH  $paraview_dir/lib/paraview-$version

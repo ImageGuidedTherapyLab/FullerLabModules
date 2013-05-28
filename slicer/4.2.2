@@ -1,0 +1,19 @@
+#%Module3.1.6#####################################################################
+##
+# for Tcl script use only
+set     version         4.2.2
+
+proc ModulesHelp { } {
+        global version 
+        puts stderr "\tThis module loads slicer $version \n"
+}
+
+module-whatis   "loads the Paraview $version "
+
+set     slicer_dir      /opt/apps/SLICER/Slicer-$version-1-linux-amd64/
+
+prepend-path	PATH             $slicer_dir/bin
+prepend-path	PATH             $slicer_dir/lib/Slicer-4.2/cli-modules/
+prepend-path	LD_LIBRARY_PATH  $slicer_dir/lib/Slicer-4.2/cli-modules/
+prepend-path	LD_LIBRARY_PATH  $slicer_dir/lib/Slicer-4.2/
+prepend-path	LD_LIBRARY_PATH  $slicer_dir/lib/Teem-1.10.0/
