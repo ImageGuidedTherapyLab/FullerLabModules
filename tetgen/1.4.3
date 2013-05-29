@@ -1,0 +1,16 @@
+#%Module3.1.6#####################################################################
+##
+# for Tcl script use only
+set     version         1.4.3
+
+proc ModulesHelp { } {
+        global version 
+        puts stderr "\tThis module loads tetgen $version \n"
+}
+
+module-whatis   "loads the tetgen $version "
+
+set     tetgen_dir     /opt/apps/tetgen/tetgen$version
+
+prepend-path	PATH             $tetgen_dir
+#prepend-path	LD_LIBRARY_PATH  $paraview_dir/lib/paraview-$version
