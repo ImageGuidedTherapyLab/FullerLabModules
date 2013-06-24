@@ -1,0 +1,16 @@
+#%Module3.1.6#####################################################################
+##
+# for Tcl script use only
+set     version         1.9.4
+
+proc ModulesHelp { } {
+        global version 
+        puts stderr "\tThis module loads ants $version \n"
+}
+
+module-whatis   "loads the ants $version "
+
+set     ants_dir      /opt/apps/ANTS/ANTs-dev-bin/
+
+prepend-path	ANTSPATH             $ants_dir/bin/
+#prepend-path	LD_LIBRARY_PATH  $ants_dir/lib/paraview-$version
