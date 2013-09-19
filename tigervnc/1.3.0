@@ -1,0 +1,16 @@
+#%Module3.1.6#####################################################################
+##
+# for Tcl script use only
+set     version         1.3.0
+
+proc ModulesHelp { } {
+        global version 
+        puts stderr "\tThis module loads TigerVNC $version \n"
+}
+
+module-whatis   "loads the TigerVNC $version "
+
+set     tigervnc_dir      /opt/apps/VNC/tigervnc/$version
+
+prepend-path	PATH             $tigervnc_dir/usr/bin
+#prepend-path	LD_LIBRARY_PATH  $tigervnc_dir/lib/paraview-$version
