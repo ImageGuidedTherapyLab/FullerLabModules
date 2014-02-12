@@ -7,12 +7,15 @@ set     antsr_dir      /opt/apps/ANTsR/$version/
 set     ants_dir       $antsr_dir/ANTsR_src/ANTsR/src/ANTS/ANTS-build/
 
 proc ModulesHelp { } {
-        global version ants_dir antsr_dir    
+        global version antsr_dir    
         puts stderr "\tThis module loads ANTsR $version \n"
         puts stderr "\t                                                      \n"
         puts stderr "\t ######### need latest version of R, edit sources.list"
         puts stderr "\t$ tail /etc/apt/sources.list                          "
         puts stderr "\tdeb http://cran.r-project.org/bin/linux/ubuntu/ precise/ "
+        puts stderr "\t                                                      \n"
+        puts stderr "\tlocal({r <- getOption('repos');                                     "
+        puts stderr "\t       r\['CRAN'\] <- 'http://cran.r-project.org'; options(repos=r)}) "
         puts stderr "\t                                                      \n"
         puts stderr "\tsudo apt-get update                                     "
         puts stderr "\tsudo apt-get install r-base                             "
@@ -20,7 +23,7 @@ proc ModulesHelp { } {
         puts stderr "\t                                                      \n"
         puts stderr "\t ######### install from github                        \n"
         puts stderr "\t wget https://raw.github.com/stnava/RMI/master/stnava/install_anstr_packages.sh \n"
-        puts stderr "\t ./install_anstr_packages.sh $ants_dir    0 1 \n"
+        puts stderr "\t ./install_anstr_packages.sh $antsr_dir    0 1 \n"
         puts stderr "\t                                                      \n"
         puts stderr "\t ######### edit cmake file to use dbg mode ??           "
         puts stderr "\t $antsr_dir/ANTsR_src/ANTsR/src/CMakeLists.txt          "
@@ -42,6 +45,7 @@ module-whatis   "loads the ANTsR $version "
 
 #prepend-path	ANTS_DIR             $ants_dir/
 prepend-path	ANTSPATH             $ants_dir/bin
+prepend-path	R_LIBS_USER          $antsr_dir
 #prepend-path	ITK_DIR              $ants_dir/ITKv4-build 
 
 #prepend-path	LD_LIBRARY_PATH  $ants_dir/lib/paraview-$version
