@@ -1,7 +1,7 @@
 #%Module3.1.6#####################################################################
 ##
 # for Tcl script use only
-set     version         dev
+set     version         dev-dbg
 #set     ants_dir      /opt/apps/ANTS/ANTs-dev-bin/
 set     antsr_dir      /opt/apps/ANTsR/$version/
 set     ants_dir       $antsr_dir/ANTsR_src/ANTsR/src/ANTS/ANTS-build/
