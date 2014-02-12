@@ -1,16 +1,27 @@
 #%Module3.1.6#####################################################################
 ##
 # for Tcl script use only
-set     version         1.9.4
+set     version         dev
+set     ants_dir      /opt/apps/ANTsR/$version
 
 proc ModulesHelp { } {
-        global version 
-        puts stderr "\tThis module loads ants $version \n"
+        global version ants_dir    
+        puts stderr "\tThis module loads ANTsR $version \n"
+        puts stderr "\t                                                      \n"
+        puts stderr "\t ######### need latest version of R, edit sources.list\n"
+        puts stderr "\t$ tail /etc/apt/sources.list                          \n"
+        puts stderr "\tdeb http://cran.cs.wwu.edu/bin/linux/ubuntu/ precise/ \n"
+        puts stderr "\tsudo apt-get update                                   \n"
+        puts stderr "\tsudo apt-get install r-base                           \n"
+        puts stderr "\tsudo apt-get install r-base-dev                       \n"
+        puts stderr "\t                                                      \n"
+        puts stderr "\t ######### install from github                        \n"
+        puts stderr "\t wget https://raw.github.com/stnava/RMI/master/stnava/install_anstr_packages.sh \n"
+        puts stderr "\t ./install_anstr_packages.sh $ants_dir    0 1 \n"
 }
 
-module-whatis   "loads the ants $version "
+module-whatis   "loads the ANTsR $version "
 
-set     ants_dir      /opt/apps/ANTS/ANTs-dev-bin/
 
 prepend-path	ANTSPATH             $ants_dir/bin/
 #prepend-path	LD_LIBRARY_PATH  $ants_dir/lib/paraview-$version
