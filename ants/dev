@@ -50,7 +50,7 @@ module-whatis   "loads the ANTsR $version "
 
 
 #prepend-path	ANTS_DIR             $ants_dir/
-prepend-path	ANTSPATH             $ants_dir/bin
+prepend-path	ANTSPATH             $ants_dir/bin/
 prepend-path	R_LIBS_USER          $antsr_dir
 #prepend-path	ITK_DIR              $ants_dir/ITKv4-build 
 
