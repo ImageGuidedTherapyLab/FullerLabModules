@@ -16,8 +16,8 @@ module-whatis  "\t python setup.py install --prefix=/opt/apps/cuda/$version/pycu
 
 
 set     cuda_dir       /opt/apps/cuda/$version/
-setenv          CUDA_DIR              $cuda_dir/cuda
-setenv          SDK_DIR               $cuda_dir/NVIDIA_GPU_Computing_SDK
-append-path	PATH                  $cuda_dir/cuda/bin
-append-path	LD_LIBRARY_PATH       $cuda_dir/cuda/lib64
+setenv          CUDA_DIR              $cuda_dir/
+setenv          SDK_DIR               $cuda_dir/Samples
+append-path	PATH                  $cuda_dir/bin
+append-path	LD_LIBRARY_PATH       $cuda_dir/lib64
 append-path	PYTHONPATH            $cuda_dir/pycuda/lib/python2.7/site-packages
