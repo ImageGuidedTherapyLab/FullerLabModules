@@ -1,0 +1,16 @@
+#%Module3.1.6#####################################################################
+##
+# for Tcl script use only
+set     version         12.1
+
+proc ModulesHelp { } {
+        global version 
+        puts stderr "\tThis module loads MKL $version \n"
+}
+
+module-whatis   "loads the MKL $version "
+
+set     mkl_dir     /opt/apps/MKL/$version
+
+#prepend-path	PATH             $tetgen_dir
+prepend-path	LD_LIBRARY_PATH  $mkl_dir/lib/intel64/

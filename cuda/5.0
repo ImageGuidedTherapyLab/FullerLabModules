@@ -9,15 +9,22 @@ proc ModulesHelp { } {
 }
 
 module-whatis   "loads the cuda $version "
-module-whatis  "\t loads pycuda build w/ epd 7.3.1"
-module-whatis  "\t ./configure.py --cuda-root=/opt/apps/cuda/$version/cuda --cudadrv-lib-dir=/usr/lib --boost-inc-dir=/usr/include --boost-lib-dir=/usr/lib --boost-python-libname=boost_python-mt --boost-thread-libname=boost_thread-mt "
-module-whatis  "\t python setup.py install --prefix=/opt/apps/cuda/5.0/pycuda"
+module-whatis   "sh cuda_5.0.35_linux_64_ubuntu10.04-1.run "
+module-whatis   "sh cula_dense_free_R17-linux.run          "
+#module-whatis  "\t loads pycuda build w/ epd 7.3.1"
+#module-whatis  "\t ./configure.py --cuda-root=/opt/apps/cuda/$version/cuda --cudadrv-lib-dir=/usr/lib --boost-inc-dir=/usr/include --boost-lib-dir=/usr/lib --boost-python-libname=boost_python-mt --boost-thread-libname=boost_thread-mt "
+#module-whatis  "\t python setup.py install --prefix=/opt/apps/cuda/5.0/pycuda"
 
 
 
 set     cuda_dir       /opt/apps/cuda/$version/
-setenv          CUDA_DIR              $cuda_dir/cuda
+setenv          CUDA_DIR              $cuda_dir/
 setenv          SDK_DIR               $cuda_dir/NVIDIA_GPU_Computing_SDK
-append-path	PATH                  $cuda_dir/cuda/bin
-append-path	LD_LIBRARY_PATH       $cuda_dir/cuda/lib64
-append-path	PYTHONPATH            $cuda_dir/pycuda/lib/python2.7/site-packages
+append-path	PATH                  $cuda_dir/bin
+append-path	LD_LIBRARY_PATH       $cuda_dir/lib64
+#append-path	PYTHONPATH            $cuda_dir/pycuda/lib/python2.7/site-packages
+
+setenv          CULA_ROOT             $cuda_dir/cula
+setenv          CULA_INC_PATH         $cuda_dir/cula/include
+setenv          CULA_LIB_PATH_32      $cuda_dir/cula/lib
+setenv          CULA_LIB_PATH_64      $cuda_dir/cula/lib64

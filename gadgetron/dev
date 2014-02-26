@@ -1,0 +1,29 @@
+#%Module3.1.6#####################################################################
+##
+# for Tcl script use only
+set     version         dev
+
+proc ModulesHelp { } {
+        global version 
+        puts stderr "\tThis module loads gadetron $version \n"
+}
+
+# cuda support
+module load cuda/5.0
+# mkl support
+module load mkl/12.1
+
+set     gadgetron_dir       /opt/apps/Gadgetron/gadgetron-$version
+
+module-whatis   "gadgetron build using http://sourceforge.net/p/gadgetron/home/Linux%20Installation/"
+module-whatis   "cd $gadgetron_dir/armadillo-4.000.4;cmake -DCMAKE_INSTALL_PREFIX=$gadgetron_dir/armadillo-4.000.4-install -Dguide_LIBRARY=guide_LIBRARY-NOTFOUND -Diomp5_LIBRARY=iomp5_LIBRARY-NOTFOUND -Dmkl_LIBRARY=/opt/apps/MKL/12.1/lib/intel64/libmkl_rt.so -Dmkl_core_LIBRARY=/opt/apps/MKL/12.1/lib/intel64/libmkl_core.so -Dmkl_intel_lp64_LIBRARY=/opt/apps/MKL/12.1/lib/intel64/libmkl_intel_lp64.so -Dmkl_intel_thread_LIBRARY=/opt/apps/MKL/12.1/lib/intel64/libmkl_intel_thread.so       -Dmkl_lapack_LIBRARY=/opt/apps/MKL/12.1/lib/intel64/libmkl_lapack95_lp64.a      "
+                               
+
+# setenv          CUDA_DIR              $cuda_dir/
+# setenv          SDK_DIR               $cuda_dir/Samples
+# append-path	PATH                  $cuda_dir/bin
+# append-path	PYTHONPATH            $cuda_dir/pycuda/lib/python2.7/site-packages
+export GADGETRON_HOME=/usr/local/gadgetron
+export ISMRMRD_HOME=/usr/local/ismrmrd
+export PATH=$PATH:$GADGETRON_HOME/bin:$ISMRMRD_HOME/bin
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$GADGETRON_HOME/lib:$ISMRMRD_HOME/lib
