@@ -11,11 +11,11 @@ proc ModulesHelp { } {
 # cuda support
 module load cuda/5.0
 # mkl support
-module load mkl/12.1
+# module load mkl/12.1
 
 set     gadgetron_dir       /opt/apps/Gadgetron/gadgetron-$version
 
-eval set  [ array get env MKL_DIR ]
+# eval set  [ array get env MKL_DIR ]
 eval set  [ array get env CULA_LIB_PATH_64 ]
 eval set  [ array get env CULA_ROOT ]
 
@@ -40,7 +40,11 @@ module-whatis   "cd $gadgetron_dir/build ;cmake -DCMAKE_VERBOSE_MAKEFILE=ON -DCM
 # setenv          SDK_DIR               $cuda_dir/Samples
 # append-path	PATH                  $cuda_dir/bin
 # append-path	PYTHONPATH            $cuda_dir/pycuda/lib/python2.7/site-packages
-#export GADGETRON_HOME=/usr/local/gadgetron
-#export ISMRMRD_HOME=/usr/local/ismrmrd
-#export PATH=$PATH:$GADGETRON_HOME/bin:$ISMRMRD_HOME/bin
-#export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$GADGETRON_HOME/lib:$ISMRMRD_HOME/lib
+
+setenv          GADGETRON_HOME                   $gadgetron_dir-install/gadgetron/
+append-path	PATH                             $gadgetron_dir-install/gadgetron/bin
+append-path	LD_LIBRARY_PATH                  $gadgetron_dir-install/gadgetron/lib
+
+setenv          ISMRMRD_HOME                     $gadgetron_dir/ismrmrd-code-install/ismrmrd/
+append-path	PATH                             $gadgetron_dir/ismrmrd-code-install/ismrmrd/bin
+append-path	LD_LIBRARY_PATH                  $gadgetron_dir/ismrmrd-code-install/ismrmrd/lib
