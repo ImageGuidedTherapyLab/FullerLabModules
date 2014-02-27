@@ -15,15 +15,29 @@ module load mkl/12.1
 
 set     gadgetron_dir       /opt/apps/Gadgetron/gadgetron-$version
 
+eval set  [ array get env MKL_DIR ]
+eval set  [ array get env CULA_LIB_PATH_64 ]
+eval set  [ array get env CULA_ROOT ]
+
 module-whatis   "gadgetron build using http://sourceforge.net/p/gadgetron/home/Linux%20Installation/"
-module-whatis   "cd $gadgetron_dir/armadillo-4.000.4;cmake -DCMAKE_INSTALL_PREFIX=$gadgetron_dir/armadillo-4.000.4-install -Dguide_LIBRARY=guide_LIBRARY-NOTFOUND -Diomp5_LIBRARY=iomp5_LIBRARY-NOTFOUND -Dmkl_LIBRARY=/opt/apps/MKL/12.1/lib/intel64/libmkl_rt.so -Dmkl_core_LIBRARY=/opt/apps/MKL/12.1/lib/intel64/libmkl_core.so -Dmkl_intel_lp64_LIBRARY=/opt/apps/MKL/12.1/lib/intel64/libmkl_intel_lp64.so -Dmkl_intel_thread_LIBRARY=/opt/apps/MKL/12.1/lib/intel64/libmkl_intel_thread.so       -Dmkl_lapack_LIBRARY=/opt/apps/MKL/12.1/lib/intel64/libmkl_lapack95_lp64.a      "
-                               
+module-whatis   "cd $gadgetron_dir/armadillo-4.000.4;cmake -DCMAKE_INSTALL_PREFIX=$gadgetron_dir/armadillo-4.000.4-install -Diomp5_LIBRARY=$CULA_LIB_PATH_64/libiomp5.so -Dmkl_LIBRARY=$MKL_DIR/lib/intel64/libmkl_rt.so -Dmkl_core_LIBRARY=$MKL_DIR/lib/intel64/libmkl_core.so -Dmkl_intel_lp64_LIBRARY=$MKL_DIR/lib/intel64/libmkl_intel_lp64.so -Dmkl_intel_thread_LIBRARY=$MKL_DIR/lib/intel64/libmkl_intel_thread.so       -Dmkl_lapack_LIBRARY=$MKL_DIR/lib/intel64/libmkl_lapack95_lp64.a      "
+module-whatis   "cd $gadgetron_dir/ismrmrd-code/build ;cmake -DCMAKE_INSTALL_PREFIX=$gadgetron_dir/ismrmrd-code-install .."
+#module-whatis   "cd $gadgetron_dir/build ;cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=$gadgetron_dir-install -DMKLROOT_PATH=$MKL_DIR/lib/intel64 -DCULA_INCLUDE_DIR=$CULA_ROOT/include -DCULA_LAPACK_BASIC_LIBRARY=$CULA_LIB_PATH_64/libcula_lapack_basic.so  -DCULA_LAPACK_LIBRARY=$CULA_LIB_PATH_64/lapackcpu.so -DISMRMRD_INCLUDE_DIR=$gadgetron_dir/ismrmrd-code-install/ismrmrd/include/ -DISMRMRD_LIBRARIES=$gadgetron_dir/ismrmrd-code-install/ismrmrd/lib/ -DISMRMRD_SCHEMA_DIR=$gadgetron_dir/ismrmrd-code-install/ismrmrd/schema/ -DISMRMRD_XSD_INCLUDE_DIR=/usr/include/ -DARMADILLO_INCLUDE_DIR=$gadgetron_dir/armadillo-4.000.4-install/include -DARMADILLO_LIBRARY=$gadgetron_dir/armadillo-4.000.4-install/lib/libarmadillo.so .."
+module-whatis   "cd $gadgetron_dir/build ;cmake -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=$gadgetron_dir-install -DCULA_INCLUDE_DIR=$CULA_ROOT/include -DCULA_LAPACK_BASIC_LIBRARY=$CULA_LIB_PATH_64/libcula_lapack_basic.so  -DARMADILLO_INCLUDE_DIR=$gadgetron_dir/armadillo-4.000.4-install/include -DARMADILLO_LIBRARY=$gadgetron_dir/armadillo-4.000.4-install/lib/libarmadillo.so .."
+
+
+## -DCULA_CORE_LIBRARY               *CULA_CORE_LIBRARY-NOTFOUND
+## -DCULA_LIBRARY                    *CULA_LIBRARY-NOTFOUND
+## $CULA_LIB_PATH_64/libcula_lapack_basic_link.so  
+## lapackcpu.so  
+## libcula_lapack_basic_link.so  
+## libcula_lapack_basic.so  
 
 # setenv          CUDA_DIR              $cuda_dir/
 # setenv          SDK_DIR               $cuda_dir/Samples
 # append-path	PATH                  $cuda_dir/bin
 # append-path	PYTHONPATH            $cuda_dir/pycuda/lib/python2.7/site-packages
-export GADGETRON_HOME=/usr/local/gadgetron
-export ISMRMRD_HOME=/usr/local/ismrmrd
-export PATH=$PATH:$GADGETRON_HOME/bin:$ISMRMRD_HOME/bin
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$GADGETRON_HOME/lib:$ISMRMRD_HOME/lib
+#export GADGETRON_HOME=/usr/local/gadgetron
+#export ISMRMRD_HOME=/usr/local/ismrmrd
+#export PATH=$PATH:$GADGETRON_HOME/bin:$ISMRMRD_HOME/bin
+#export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$GADGETRON_HOME/lib:$ISMRMRD_HOME/lib
