@@ -28,3 +28,4 @@ setenv          CULA_ROOT             $cuda_dir/cula
 setenv          CULA_INC_PATH         $cuda_dir/cula/include
 setenv          CULA_LIB_PATH_32      $cuda_dir/cula/lib
 setenv          CULA_LIB_PATH_64      $cuda_dir/cula/lib64
+append-path	LD_LIBRARY_PATH       $cuda_dir/cula/lib64
