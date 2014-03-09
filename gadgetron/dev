@@ -41,6 +41,7 @@ module-whatis   "cd $gadgetron_dir/build ;cmake -DCMAKE_VERBOSE_MAKEFILE=ON -DCM
 # append-path	PATH                  $cuda_dir/bin
 # append-path	PYTHONPATH            $cuda_dir/pycuda/lib/python2.7/site-packages
 
+setenv          GADGETRON_SOURCE                 $gadgetron_dir/
 setenv          GADGETRON_HOME                   $gadgetron_dir-install/gadgetron/
 append-path	PATH                             $gadgetron_dir-install/gadgetron/bin
 append-path	LD_LIBRARY_PATH                  $gadgetron_dir-install/gadgetron/lib
