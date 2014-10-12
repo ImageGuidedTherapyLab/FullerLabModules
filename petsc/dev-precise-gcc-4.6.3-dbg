@@ -6,8 +6,8 @@ proc ModulesHelp { } {
 }
 
 
-set          cflags           "-O0"
-set          cxxflags         "-O0"
+set          cflags           "-g -O0"
+set          cxxflags         "-g -O0"
 set          petsc_version   petsc-dev
 
 module-whatis  "\t download petsc with "
