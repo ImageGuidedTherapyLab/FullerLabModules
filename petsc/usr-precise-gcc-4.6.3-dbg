@@ -10,6 +10,9 @@ set          cflags           "-g -O0"
 set          cxxflags         "-g -O0"
 set          petsc_version   petsc-usr
 
+module-whatis  "\t apt-get install libnetcdf-dev               "
+module-whatis  "\t apt-get install libhdf5-serial-dev          "
+module-whatis  "\t apt-get install libexodusii-dev libexodusii5"
 module-whatis  "\t download petsc with "
 module-whatis  "\t git clone https://bitbucket.org/petsc/petsc $petsc_version "
 module-whatis  "\t cd $petsc_version; "
