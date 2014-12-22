@@ -8,7 +8,7 @@ proc ModulesHelp { } {
 
 set          cflags           "-g -O0"
 set          cxxflags         "-g -O0"
-set          petsc_version   petsc-dev
+set          petsc_version   petsc-usr
 
 module-whatis  "\t apt-get install libnetcdf-dev               "
 module-whatis  "\t apt-get install libhdf5-serial-dev          "
@@ -19,11 +19,6 @@ module-whatis  "\t cd $petsc_version; "
 module-whatis  "\t petsc configured with "
 module-whatis  "\t ./config/configure.py --with-shared-libraries --with-clanguage=c++ --CFLAGS='$cflags' --CXXFLAGS='$cxxflags' --download-ctetgen  --download-triangle --with-debugging=yes --with-blas-lapack-dir=/opt/apps/MKL/12.1/lib/intel64/  --with-exodusii-lib=\[/usr/lib/x86_64-linux-gnu/libexoIIv2.so\] --with-netcdf-dir=/usr/lib --with-hdf5-dir=/usr/lib --with-c2html=0 --with-exodusii-include=/usr/include  --with-opencl-include=/usr/include/ --with-opencl-lib=/usr/lib/libOpenCL.so  --download-viennacl=yes"
 module-whatis  "\t cd \$PETSC_DIR/\$PETSC_ARCH/externalpackages; git clone https://bitbucket.org/petsc/petsc4py.git; cd petsc4py; python setup.py install --home=\$PETSC_DIR/\$PETSC_ARCH"
- 
- 
- 
-
-
 
 
 
