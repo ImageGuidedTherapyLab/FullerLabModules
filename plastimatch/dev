@@ -1,0 +1,38 @@
+#%Module1.0#####################################################################
+##
+#local environment
+set          compiler               gcc-4.4.7
+set          plastimatch_version    1.5.16
+set          library_dir            /opt/apps/plastimatch/$plastimatch_version
+set          method                 dbg
+set          itk_version            InsightToolkit-4.6.0
+set          itk_home               $library_dir/$itk_version-$compiler-$method
+set          itk_dir                $itk_home/lib/cmake/ITK-4.6
+set          plastimatch_install    $library_dir/plastimatch-$plastimatch_version-install 
+
+##
+proc ModulesHelp { } {
+	puts stderr "\t set environment variables to build plastimatch $plastimatch_version with itk $itk_version"
+}
+
+module-whatis  "\t set environment variables to build plastimatch $plastimatch_version with itk $itk_version"
+module-whatis  "\n\t\t wget http://forge.abcd.harvard.edu/gf/download/frsrelease/205/2992/plastimatch-1.5.16-Source.tar.bz2"
+module-whatis  "\n\t\t wget http://downloads.sourceforge.net/project/itk/itk/4.6/InsightToolkit-4.6.0.tar.gz               "
+module-whatis  "\n\t\t apt-get install dcmtk libdcmtk2 libdcmtk2-dev                                                       "
+module-whatis  "\t mkdir $itk_version-build; cd $itk_version-build; cmake -DCMAKE_CXX_COMPILER=/usr/bin/g++-4.4 -DCMAKE_C_COMPILER=/usr/bin/gcc-4.4 -DBUILD_SHARED_LIBS=ON  -DCMAKE_BUILD_TYPE=Debug -DBUILD_EXAMPLES=OFF -DBUILD_TESTING=OFF -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_INSTALL_PREFIX=$itk_home -DModule_ITKReview=ON ../$itk_version "
+module-whatis  "\t mkdir plastimatch-$plastimatch_version-build; cd plastimatch-$plastimatch_version-build; cmake -DCMAKE_CXX_COMPILER=/usr/bin/g++-4.4 -DCMAKE_C_COMPILER=/usr/bin/gcc-4.4 -DBUILD_SHARED_LIBS=ON  -DCMAKE_BUILD_TYPE=Debug -DBUILD_EXAMPLES=OFF -DBUILD_TESTING=OFF -DCMAKE_VERBOSE_MAKEFILE=ON -DITK_DIR=$itk_dir -DDCMTK_DIR=/usr/lib -DCUDA_FOUND=OFF -DCMAKE_INSTALL_PREFIX=$plastimatch_install -DPLM_CONFIG_DISABLE_CUDA=ON ../plastimatch-$plastimatch_version-Source "
+
+
+
+
+eval set  [ array get env HOME ]
+
+#PLASTIMATCH/ITK  environment
+setenv           PLASTIMATCH_SOURCE      $library_dir/plastimatch-$plastimatch_version-Source 
+setenv           ITK_SOURCE              $library_dir/$itk_version
+setenv           ITK_HOME                $itk_home
+setenv           ITK_DIR                 $itk_dir
+prepend-path     PATH                    $plastimatch_install/bin 
+prepend-path     LD_LIBRARY_PATH         $plastimatch_install/lib 
+prepend-path     LD_LIBRARY_PATH         $itk_home/lib
+#prepend-path PYTHONPATH      $itk_home/lib/ITK-4.3/Python
