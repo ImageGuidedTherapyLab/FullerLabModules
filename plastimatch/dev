@@ -2,7 +2,7 @@
 ##
 #local environment
 set          compiler               gcc-4.4.7
-set          plastimatch_version    1.5.16
+set          plastimatch_version    dev
 set          library_dir            /opt/apps/plastimatch/$plastimatch_version
 set          method                 dbg
 set          itk_version            InsightToolkit-4.6.0
@@ -19,7 +19,8 @@ module-whatis  "\t set environment variables to build plastimatch $plastimatch_v
 module-whatis  "\n\t\t wget http://forge.abcd.harvard.edu/gf/download/frsrelease/205/2992/plastimatch-1.5.16-Source.tar.bz2"
 module-whatis  "\n\t\t wget http://downloads.sourceforge.net/project/itk/itk/4.6/InsightToolkit-4.6.0.tar.gz               "
 module-whatis  "\n\t\t apt-get install dcmtk libdcmtk2 libdcmtk2-dev                                                       "
-module-whatis  "\t mkdir $itk_version-build; cd $itk_version-build; cmake -DCMAKE_CXX_COMPILER=/usr/bin/g++-4.4 -DCMAKE_C_COMPILER=/usr/bin/gcc-4.4 -DBUILD_SHARED_LIBS=ON  -DCMAKE_BUILD_TYPE=Debug -DBUILD_EXAMPLES=OFF -DBUILD_TESTING=OFF -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_INSTALL_PREFIX=$itk_home -DModule_ITKReview=ON ../$itk_version "
+module-whatis  "\t mkdir $itk_version-build; cd $itk_version-build; cmake -DCMAKE_CXX_COMPILER=/usr/bin/g++-4.4 -DCMAKE_C_COMPILER=/usr/bin/gcc-4.4 -DBUILD_SHARED_LIBS=ON  -DCMAKE_BUILD_TYPE=Debug -DBUILD_EXAMPLES=OFF -DBUILD_TESTING=OFF -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_INSTALL_PREFIX=$itk_home -DModule_ITKReview=ON  ../$itk_version "
+
 module-whatis  "\t mkdir plastimatch-$plastimatch_version-build; cd plastimatch-$plastimatch_version-build; cmake -DCMAKE_CXX_COMPILER=/usr/bin/g++-4.4 -DCMAKE_C_COMPILER=/usr/bin/gcc-4.4 -DBUILD_SHARED_LIBS=ON  -DCMAKE_BUILD_TYPE=Debug -DBUILD_EXAMPLES=OFF -DBUILD_TESTING=OFF -DCMAKE_VERBOSE_MAKEFILE=ON -DITK_DIR=$itk_dir -DDCMTK_DIR=/usr/lib -DCUDA_FOUND=OFF -DCMAKE_INSTALL_PREFIX=$plastimatch_install -DPLM_CONFIG_DISABLE_CUDA=ON ../plastimatch-$plastimatch_version-Source "
 
 
