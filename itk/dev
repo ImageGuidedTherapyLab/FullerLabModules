@@ -1,7 +1,7 @@
 #%Module1.0#####################################################################
 ##
 #local environment
-set          compiler        gcc-4.4.7
+set          compiler        gcc-4.4.3
 set          library_dir     /opt/apps
 set          method          dbg
 set          itk_version     InsightToolkit-dev
