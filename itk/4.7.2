@@ -1,0 +1,30 @@
+#%Module1.0#####################################################################
+##
+#local environment
+set          compiler        gcc-4.4.7
+set          library_dir     /opt/apps
+set          method          dbg
+set          itk_version     InsightToolkit-4.7.2
+##
+proc ModulesHelp { } {
+	puts stderr "\t set environment variables to build ITK $itk_version"
+}
+
+module-whatis  "\t set environment variables to build ITK $itk_version"
+module-whatis  "\n\t\t simple build"
+module-whatis  "\t cmake -DCMAKE_CXX_COMPILER=/usr/bin/g++-4.4 -DCMAKE_C_COMPILER=/usr/bin/gcc-4.4 -DBUILD_SHARED_LIBS=Off  -DCMAKE_BUILD_TYPE=Debug -DBUILD_EXAMPLES=OFF -DBUILD_TESTING=OFF -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_INSTALL_PREFIX=\$ITK_HOME ../$itk_version "
+module-whatis  "\n\t\t python bindings need cmake > 2.8.7"
+module-whatis  "\n\t\t gpu support "
+module-whatis  "\t cmake -DCMAKE_CXX_COMPILER=/usr/bin/g++-4.4 -DCMAKE_C_COMPILER=/usr/bin/gcc-4.4 -DBUILD_SHARED_LIBS=ON  -DCMAKE_BUILD_TYPE=Debug -DBUILD_EXAMPLES=ON -DBUILD_TESTING=OFF -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_INSTALL_PREFIX=\$ITK_HOME -DITK_USE_GPU=ON -DOPENCL_INCLUDE_DIRS=\$SDK_DIR/OpenCL/common/inc -DOPENCL_LIBRARIES=/usr/lib/nvidia-current/libOpenCL.so -DOPENCL_ROOT_DIR=\$SDK_DIR/OpenCL -DITK_WRAP_PYTHON=ON -DINSTALL_WRAP_ITK_COMPATIBILITY=OFF -DITK_WRAP_double=ON -DITK_USE_SYSTEM_SWIG=ON -DPYTHON_EXECUTABLE=\$EPD_ROOT/bin/python -DPYTHON_INCLUDE_DIR=\$EPD_ROOT/include/python2.7 -DPYTHON_LIBRARY=\$EPD_ROOT/lib/libpython2.7.so ../$itk_version "
+module-whatis  "\t cmake -DCMAKE_CXX_COMPILER=/usr/bin/g++-4.4 -DCMAKE_C_COMPILER=/usr/bin/gcc-4.4 -DBUILD_SHARED_LIBS=ON  -DCMAKE_BUILD_TYPE=Debug -DBUILD_EXAMPLES=ON -DBUILD_TESTING=ON -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_INSTALL_PREFIX=\$ITK_HOME -DITK_USE_GPU=ON -DOPENCL_INCLUDE_DIRS=/usr/include -DOPENCL_LIBRARIES=/usr/lib/libOpenCL.so  ../$itk_version "
+
+eval set  [ array get env HOME ]
+
+#ITK environment
+set          itk_home        $library_dir/ITK/$itk_version-$compiler-$method
+setenv       ITK_VERSION     $itk_version
+setenv       ITK_SOURCE      $library_dir/ITK/$itk_version
+setenv       ITK_HOME        $itk_home
+setenv       ITK_DIR         $itk_home/lib/cmake/ITK-4.7
+#prepend-path PYTHONPATH      $itk_home/lib/ITK-4.3/Python
+#prepend-path LD_LIBRARY_PATH $itk_home/lib
