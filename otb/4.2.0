@@ -12,7 +12,7 @@ proc ModulesHelp { } {
 
 module-whatis  "\t set environment variables to build OTB $otb_version"
 module-whatis  "\n\t\t simple build"
-module-whatis  "\t cmake -DCMAKE_CXX_COMPILER=/usr/bin/g++-4.4 -DCMAKE_C_COMPILER=/usr/bin/gcc-4.4 -DBUILD_SHARED_LIBS=Off  -DCMAKE_BUILD_TYPE=Debug -DBUILD_EXAMPLES=OFF -DBUILD_TESTING=OFF -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_INSTALL_PREFIX=\$OTB_HOME ../$otb_version "
+module-whatis  "\t cmake -DCMAKE_CXX_COMPILER=/usr/bin/g++-4.4 -DCMAKE_C_COMPILER=/usr/bin/gcc-4.4 -DCMAKE_BUILD_TYPE=Debug -DBUILD_SHARED_LIBS=Off -DOTB_USE_EXTERNAL_LIBKML=ON -DBUILD_APPLICATIONS=OFF -DBUILD_EXAMPLES=OFF -DBUILD_TESTING=OFF -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_INSTALL_PREFIX=\$OTB_HOME ../$otb_version "
 
 eval set  [ array get env HOME ]
 
@@ -21,4 +21,4 @@ set          otb_home        $library_dir/OTB/$otb_version-$compiler-$method
 setenv       OTB_VERSION     $otb_version
 setenv       OTB_SOURCE      $library_dir/OTB/$otb_version
 setenv       OTB_HOME        $otb_home
-setenv       OTB_DIR         $otb_home/lib/cmake/OTB-4.2
+setenv       OTB_DIR         $otb_home/lib/otb
