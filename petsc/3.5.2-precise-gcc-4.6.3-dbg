@@ -8,7 +8,7 @@ proc ModulesHelp { } {
 
 set          cflags           "-g -O0"
 set          cxxflags         "-g -O0"
-set          petsc_version   petsc-dev
+set          petsc_version   petsc-3.5.2
 
 module-whatis  "\t apt-get install libnetcdf-dev               "
 module-whatis  "\t apt-get install libhdf5-serial-dev          "
