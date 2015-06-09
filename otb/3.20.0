@@ -22,4 +22,4 @@ set          otb_home        $library_dir/OTB/$otb_version-$compiler-$method
 setenv       OTB_VERSION     $otb_version
 setenv       OTB_SOURCE      $library_dir/OTB/$otb_version
 setenv       OTB_HOME        $otb_home
-setenv       OTB_DIR         $otb_home/lib/cmake/OTB-3.20
+setenv       OTB_DIR         $otb_home/lib/otb
