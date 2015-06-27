@@ -11,9 +11,13 @@ proc ModulesHelp { } {
 }
 
 module-whatis  "\t set environment variables to build gromacs $gromacs_version"
-module-whatis  "\t ./configure --enable-mpi --prefix=\$GROMACS_DIR --disable-float --program-suffix=-4.5.4-double-mpi --with-fft=fftw3 "
-module-whatis  "\t make mdrun "
-module-whatis  "\t make install-mdrun"
+module-whatis  "\t ./configure --prefix=\$GROMACS_DIR --disable-float --with-fft=fftw3 --program-suffix=$compiler "
+module-whatis  "\t make "
+module-whatis  "\t make install"
+
+#module-whatis  "\t ./configure --enable-mpi --prefix=\$GROMACS_DIR --disable-float --program-suffix=$compiler-mpi --with-fft=fftw3 --program-suffix=$compiler "
+#module-whatis  "\t make mdrun "
+#module-whatis  "\t make install-mdrun"
 
 eval set  [ array get env HOME ]
 
