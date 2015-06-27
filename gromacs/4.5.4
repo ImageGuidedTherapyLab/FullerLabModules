@@ -1,0 +1,24 @@
+#%Module1.0#####################################################################
+##
+#local environment
+set          compiler        gcc-4.6.3
+set          library_dir     /opt/apps
+set          method          dbg
+set          gromacs_version     gromacs-4.5.4
+##
+proc ModulesHelp { } {
+	puts stderr "\t set environment variables to build gromacs $gromacs_version"
+}
+
+module-whatis  "\t set environment variables to build gromacs $gromacs_version"
+module-whatis  "\t ./configure --enable-mpi --prefix=\$GROMACS_DIR --disable-float --program-suffix=-4.5.4-double-mpi --with-fft=fftw3 "
+module-whatis  "\t make mdrun "
+module-whatis  "\t make install-mdrun"
+
+eval set  [ array get env HOME ]
+
+#environment
+set          gromacs_dir     $library_dir/gromacs/$gromacs_version-$compiler-$method
+setenv       GROMACS_SOURCE  $library_dir/gromacs/$gromacs_version
+setenv       GROMACS_DIR     $gromacs_dir/
+prepend-path PATH            $gromacs_dir/bin
