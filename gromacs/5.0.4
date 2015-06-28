@@ -1,0 +1,27 @@
+#%Module1.0#####################################################################
+##
+#local environment
+set          compiler        gcc-4.6.3
+set          library_dir     /opt/apps
+set          method          dbg
+set          gromacs_version     gromacs-5.0.4
+##
+proc ModulesHelp { } {
+	puts stderr "\t set environment variables to build gromacs $gromacs_version"
+}
+
+module-whatis  "\t set environment variables to build gromacs $gromacs_version"
+module-whatis  "\t cmake  -DCMAKE_BUILD_TYPE=Debug -DGMX_GPU=ON -DGMX_MPI=ON -DBUILD_TESTING=OFF  -DCUDA_TOOLKIT_ROOT_DIR=\$CUDA_DIR -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_INSTALL_PREFIX=\$GROMACS_DIR ../$gromacs_version "
+
+module-whatis  "\t make "
+module-whatis  "\t make install"
+
+eval set  [ array get env HOME ]
+
+module load cuda/5.5
+
+#environment
+set          gromacs_dir     $library_dir/gromacs/$gromacs_version-$compiler-$method
+setenv       GROMACS_SOURCE  $library_dir/gromacs/$gromacs_version
+setenv       GROMACS_DIR     $gromacs_dir/
+prepend-path PATH            $gromacs_dir/bin

@@ -1,0 +1,16 @@
+#%Module1.0
+
+# for Tcl script use only
+set             version         2.8.10
+set             cmake_home      /opt/apps/cmake/$version
+
+
+proc ModulesHelp { } {
+    global version
+    puts stderr "The CMAKE $version (http://cmake.org/)\n"
+}
+
+
+prepend-path    PATH            $cmake_home/bin
+# prepend-path    LD_LIBRARY_PATH $cmake_home/bin
+# prepend-path    PYTHONPATH      $cmake_home/bin
