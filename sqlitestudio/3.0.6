@@ -1,0 +1,17 @@
+#%Module3.1.6#####################################################################
+##
+# for Tcl script use only
+set     version         3.0.6
+
+
+proc ModulesHelp { } {
+        global version 
+        puts stderr "\tThis module loads SQLiteStudio $version \n"
+}
+
+module-whatis   "loads the Paraview $version "
+
+set     sqlitedir      /opt/apps/SQLiteStudio/$version
+
+prepend-path	PATH             $sqlitedir
+#prepend-path	LD_LIBRARY_PATH  $sqlitedir/lib
