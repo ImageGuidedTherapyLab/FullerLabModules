@@ -1,0 +1,15 @@
+#%Module3.1.6#####################################################################
+##
+# for Tcl script use only
+set     version         3.4.0
+
+proc ModulesHelp { } {
+        global version 
+        puts stderr "\tThis module loads itksnap $version \n"
+}
+
+module-whatis   "loads the itksnap $version "
+
+set     itksnap_dir      /opt/apps/itksnap/itksnap-$version3.4.0-Linux-x86_64
+prepend-path	PATH             $itksnap_dir/bin
+#prepend-path	LD_LIBRARY_PATH  $itksnap_dir/lib/snap-$version
