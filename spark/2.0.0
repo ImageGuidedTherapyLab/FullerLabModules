@@ -2,23 +2,25 @@
 ##
 # for Tcl script use only
 set     version         2.0.0
+set     spark_home /srv/spark
 
 proc ModulesHelp { } {
-        global version 
+        global version  spark_home
         puts stderr "\tThis module loads spark $version \n"
         puts stderr "\thttps://spark.apache.org/downloads.html"
-        puts stderr "\tneed - https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.1.39.tar.gz"
-
+        puts stderr "\tWIP - wget http://apache.claz.org/hadoop/core/hadoop-2.7.0/hadoop-2.7.0.tar.gz"
+        puts stderr "\twget https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.1.39.tar.gz"
+        puts stderr "\tcp mysql-connector-java-5.1.39-bin.jar $spark_home/jars "
 }
 
 module-whatis   "loads the spark $version "
 
-set     spark_home /srv/spark
 
 prepend-path	PATH             $spark_home/bin
 prepend-path	SPARK_HOME       $spark_home
 prepend-path    PYTHONPATH      $spark_home/python/lib/py4j-0.10.1-src.zip
 prepend-path    PYTHONPATH      $spark_home/python
+prepend-path    HADOOP_HOME /opt/apps/spark/hadoop-2.7.0
 
 
 #prepend-path	LD_LIBRARY_PATH  $paraview_dir/lib/paraview-$version
