@@ -1,0 +1,23 @@
+#%Module3.1.6#####################################################################
+##
+# for Tcl script use only
+set     version         2.0.0
+
+proc ModulesHelp { } {
+        global version 
+        puts stderr "\tThis module loads spark $version \n"
+        puts stderr "\thttps://spark.apache.org/downloads.html"
+
+}
+
+module-whatis   "loads the spark $version "
+
+set     spark_home /srv/spark
+
+prepend-path	PATH             $spark_home/bin
+prepend-path	SPARK_HOME       $spark_home
+prepend-path    PYTHONPATH      $spark_home/python/lib/py4j-0.10.1-src.zip
+prepend-path    PYTHONPATH      $spark_home/python
+
+
+#prepend-path	LD_LIBRARY_PATH  $paraview_dir/lib/paraview-$version
