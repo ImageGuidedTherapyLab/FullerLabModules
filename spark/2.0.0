@@ -7,6 +7,7 @@ proc ModulesHelp { } {
         global version 
         puts stderr "\tThis module loads spark $version \n"
         puts stderr "\thttps://spark.apache.org/downloads.html"
+        puts stderr "\tneed - https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.1.39.tar.gz"
 
 }
 
