@@ -1,0 +1,21 @@
+#%Module3.1.6#####################################################################
+##
+# for Tcl script use only
+set     version         3
+
+proc ModulesHelp { } {
+        global version
+        puts stderr "\tThis module loads miniconda$version for use with Keras TF \n"
+        puts stderr "\tminiconda - wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh;  bash Miniconda3-latest-Linux-x86_64.sh "
+        puts stderr "\tpip -  conda install pip cudatoolkit  cudnn                                                                                     "
+        puts stderr "\ttensorflow - pip install tensorflow-gpu  keras nibabel                                                                          "
+        puts stderr "\ttensorflow - conda install matplotlib jupyter notebook pandas scikit-learn scikit-image                                         "
+        puts stderr "\ttheano     - conda install theano pygpu                                                                                         "
+        puts stderr "\tconda list | grep tensor \n"
+}
+
+set     conda_dir        /opt/apps/miniconda/miniconda3
+
+module-whatis   'loads the miniconda $version '
+
+prepend-path   PATH             $conda_dir/bin
